@@ -1,0 +1,25 @@
+{
+    "identifier": "org.mazaitis.paul.ConTeXt",
+    "name": "ConTeXt",
+    "organization": "Paul Mazaitis",
+    "description": "Lorem ipsum, dolor sit amet.",
+    "version": "0.1.0",
+    "categories": ["languages"],
+    "main": "main.js",
+    "entitlements": {
+        "clipboard": false,
+        "process": true,
+        "requests": false,
+        "filesystem": "readonly"
+    },  
+    "commands": {
+        "editor": [
+            {
+                "title": "Compile Current File",
+                "command": "compileCurrentFile",
+                "shortcut": "shift-cmd-b"
+            }
+        ]
+        
+    }
+}
