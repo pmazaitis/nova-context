@@ -1,0 +1,3 @@
+[submodule "tree-sitter/tree-sitter-context"]
+	path = tree-sitter/tree-sitter-context
+	url = https://github.com/pmazaitis/tree-sitter-context
