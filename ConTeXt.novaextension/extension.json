@@ -2,8 +2,8 @@
     "identifier": "org.mazaitis.paul.ConTeXt",
     "name": "ConTeXt",
     "organization": "Paul Mazaitis",
-    "description": "Lorem ipsum, dolor sit amet.",
-    "version": "0.1.0",
+    "description": "ConTeXt language support.",
+    "version": "0.5.0",
     "categories": ["languages"],
     "main": "main.js",
     "entitlements": {
@@ -12,14 +12,32 @@
         "requests": false,
         "filesystem": "readonly"
     },  
-    "commands": {
-        "editor": [
-            {
-                "title": "Compile Current File",
-                "command": "compileCurrentFile",
-                "shortcut": "shift-cmd-b"
-            }
-        ]
-        
+    "taskTemplates": {
+        "compile-current": {
+            "name": "Compile",
+            "description": "Compiles the current ConTeXt document.",
+            "persistent": false,
+            "tasks": {
+                "build": {
+                    "shell": true,
+                    "command": "$(config:context.binary)",
+                    "args": [
+                        "$File"
+                    ],
+                    "env": {
+                             
+                    }
+                }
+            },
+            "config": [
+                {
+                    "key": "context.binary",
+                    "title": "Context Command",
+                    "type": "string",
+                    "placeholder": "context",
+                    "default": "context"
+                }
+            ]
+        }
     }
 }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <syntax name="context">
     <meta>
-        <name>ConTeXt (EN)</name>
+        <name>ConTeXt</name>
         <type>script</type>
         <preferred-file-extension>tex</preferred-file-extension>
     </meta>
     
     <detectors>
         <extension priority="1.0">tex</extension>
+        <extension priority="1.0">lmtx</extension>
     </detectors>
     
     <indentation>
@@ -26,7 +27,7 @@
     </comments>
     
     <injection>
-        <expression>^(ConTeXt)$</expression>
+        <expression>^(context)$</expression>
     </injection>
     
     <tree-sitter language="context">
