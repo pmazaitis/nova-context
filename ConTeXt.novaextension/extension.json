@@ -1,43 +1,113 @@
 {
-    "identifier": "org.mazaitis.paul.ConTeXt",
-    "name": "ConTeXt",
-    "organization": "Paul Mazaitis",
-    "description": "ConTeXt language support.",
-    "version": "0.5.0",
-    "categories": ["languages"],
-    "main": "main.js",
-    "entitlements": {
-        "clipboard": false,
-        "process": true,
-        "requests": false,
-        "filesystem": "readonly"
-    },  
-    "taskTemplates": {
-        "compile-current": {
-            "name": "Compile",
-            "description": "Compiles the current ConTeXt document.",
-            "persistent": false,
-            "tasks": {
-                "build": {
-                    "shell": true,
-                    "command": "$(config:context.binary)",
-                    "args": [
-                        "$File"
-                    ],
-                    "env": {
-                             
-                    }
-                }
-            },
-            "config": [
-                {
-                    "key": "context.binary",
-                    "title": "Context Command",
-                    "type": "string",
-                    "placeholder": "context",
-                    "default": "context"
-                }
-            ]
+  "identifier": "org.mazaitis.paul.context",
+  "name": "ConTeXt (EN)",
+  "organization": "Paul Mazaitis",
+  "description": "ConTeXt language support.",
+  "version": "0.5.0",
+  "categories": ["languages"],
+  "license": "MIT",
+  "main": "main.js",
+  "activationEvents": [
+    "onLanguage:context",
+    "onWorkspaceContains:*.mkiv",
+    "onWorkspaceContains:*.lmtx"
+  ],
+  "entitlements": {
+    "clipboard": false,
+    "process": true,
+    "requests": false,
+    "filesystem": "readwrite"
+  },
+  "config": [
+    {
+      "title": "ConTeXt Options",
+      "description": "Options for building ConTeXt documents",
+      "type": "section",
+      "children": [
+        {
+          "key": "org.mazaitis.context.path",
+          "title": "Path to ConTeXt",
+          "description": "Path to the `context` utility. May be simply 'context' if it is in your PATH.",
+          "type": "path",
+          "default": "context"
+        },
+        {
+          "key": "org.mazaitis.context.langserver",
+          "title": "Language Server",
+          "type": "path",
+          "default": "digestif",
+          "description": "Language Server utility to use for ConTeXt files."
         }
+      ]
+    },
+    {
+      "title": "Skim Options",
+      "description": "These options apply to using Skim as PDF previewer.",
+      "type": "section",
+      "children": [
+        {
+          "key": "org.mazaitis.context.skim.path",
+          "title": "Path to Skim",
+          "description": "The Skim application is used for previewing generated PDF files. Make sure that Nova is selected in Skim’s PDF–TeX Sync preferences, as explained in the Extension Help.",
+          "type": "path",
+          "default": "/Applications/Skim.app"
+        },
+        {
+          "key": "org.mazaitis.context.skim.revert",
+          "title": "Revert Skim on Run",
+          "description": "Causes the PDF file in Skim to be reloaded when you use the Run action. Should only be used if Skim isn't set up to do this automatically.",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "org.mazaitis.context.skim.background",
+          "title": "Keep Skim in background on Run",
+          "description": "Don't bring the Skim window into foreground when the Run action is used.",
+          "type": "boolean",
+          "default": false
+        }
+      ]
     }
+  ],
+  "configWorkspace": [
+    {
+      "key": "org.mazaitis.context.path",
+      "title": "Path to ConTeXt",
+      "description": "Path to the `context` utility (overrides global setting if given).",
+      "type": "path",
+      "default": "context"
+    }
+  ],
+  "taskTemplates": {
+    "context": {
+      "name": "Compile Context",
+      "description": "Builds the PDF with ConTeXt. Supports auto-update & preview with Skim via run button.",
+      "config": [
+        {
+          "key": "org.mazaitis.context.mainfile",
+          "title": "Compile ConTeXt",
+          "description": "source file (defaults to the current file)",
+          "default": "$File",
+          "type": "path",
+          "filetype": ["tex", "mkiv", "lmtx"],
+          "required": true
+        }
+      ],
+      "tasks": {
+        "build": {
+          "resolve": "org.mazaitis.context.tasks",
+          "data": "context"
+        },
+        "run": {
+          "resolve": "org.mazaitis.context.tasks",
+          "data": "context",
+          "buildBeforeRunning": false
+        },
+        "clean": {
+          "resolve": "org.mazaitis.context.tasks",
+          "data": "context"
+        }
+      }
+    }
+  }
 }
