@@ -8,6 +8,7 @@
     
     <detectors>
         <extension priority="1.0">tex</extension>
+        <extension priority="1.0">mkiv</extension>
         <extension priority="1.0">lmtx</extension>
     </detectors>
     
