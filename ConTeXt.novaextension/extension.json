@@ -105,14 +105,14 @@
         },
         {
           "key": "org.mazaitis.context.clean.synctex",
-          "title": "Remove SyncTeX Files",
+          "title": "Remove SyncTeX File",
           "description": "Remove the .synctex file associated with the current source file.",
           "type": "boolean",
           "default": false
         },
         {
           "key": "org.mazaitis.context.clean.pdf",
-          "title": "Remove PDF Files",
+          "title": "Remove PDF File",
           "description": "Remove the .pdf file associated with the current source file.",
           "type": "boolean",
           "default": false
