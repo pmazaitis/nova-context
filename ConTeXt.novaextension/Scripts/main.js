@@ -1,3 +1,8 @@
+
+
+// ## Preamble
+
+
 exports.activate = () => {
   console.log("Activating ConTeXt");
 };
@@ -5,6 +10,22 @@ exports.activate = () => {
 exports.deactivate = () => {
   console.log("Deactivating ConTeXt");
 };
+
+
+
+
+
+// ## Tasks
+// 
+// This extension offers a task assistant and a task template.
+//
+// The task assistant generates a simple task that compiles the ConTeXt file in the current buffer with focus.
+//
+// The task template offers the user the ability to create a task with a custom, specific file to always use as the compilation source. This is useful in situations where a user wants to re-compile a ConTeXt file after making changes to an environment file, or some other dependancy. 
+
+
+
+
 
 nova.commands.register(
   "org.mazaitis.context.getFilenameWithoutExt",
@@ -16,13 +37,17 @@ nova.commands.register(
   }
 );
 
+nova.commands.register('org.mazaitis.context.cleanProjectFiles', (args) => {
+  console.log("Cleaning: " + JSON.stringify(args));
+});
+
 function getContext() {
   let ws = nova.workspace.config.get("org.mazaitis.context.path");
   if (ws == "") ws = nova.config.get("org.mazaitis.context.path");
   return ws;
 }
 
-function displayLine(pdf) {
+function previewInSkim(pdf) {
   const args = [
     "${Config:org.mazaitis.context.skim.path}/Contents/SharedSupport/displayline",
   ];
@@ -39,6 +64,22 @@ function displayLine(pdf) {
   });
 }
 
+function cleanProject(stem) {
+  const args = [];
+  args.push(stem);
+  return new TaskCommandAction("org.mazaitis.context.cleanProjectFiles", {
+    args: args,
+    env: nova.environment,
+  });
+}
+
+// function cleanProjectFiles(stem) {
+//   // if (nova.config.get("org.mazaitis.context.clean.log")) {
+//   //   fs.remove(stem + ".log");
+//   // }
+//   console.log("Got " + stem);
+// }
+
 class ContextTaskProvider {
   static identifier = "org.mazaitis.context.tasks";
 
@@ -49,19 +90,29 @@ class ContextTaskProvider {
     });
   }
 
+  // static cleanAuxFiles(... options) {
+  //   
+  // }
+
   genericContextTask() {
     const task = new Task("Current ConTeXt File");
     task.setAction(Task.Build, ContextTaskProvider.contextTask("$File"));
     task.setAction(
       Task.Run,
-      displayLine(
+      previewInSkim(
         "$FileDirname/${Command:org.mazaitis.context.getFilenameWithoutExt}.pdf"
       )
     );
+    // task.setAction(
+    //   Task.Clean,
+    //   ContextTaskProvider.cleanAuxFiles("$File")
+    // );
     return task;
   }
 
+
   provideTasks() {
+    // Task assistant
     let tasks = [];
     tasks.push(this.genericContextTask());
     return tasks;
@@ -69,25 +120,40 @@ class ContextTaskProvider {
 
   resolveTaskAction(context) {
     const mainfile = context.config.get("org.mazaitis.context.mainfile");
-    if (!mainfile) {
-      console.error("[context] no file specified in task settings!");
+    if (mainfile == "" || !mainfile) {
+      let editor = TextEditor.isTextEditor(context)
+        ? context
+        : context.activeTextEditor;
+      mainfile = (editor.document.path)[0];
+    }
+    if (mainfile == "" || !mainfile) {
+      console.error("[context] unable to determine mainfile!");
       return null;
     }
+    let stem = nova.path.join(nova.path.dirname(mainfile), nova.path.splitext(mainfile)[0]);
+    console.log("Mainfile is: " + mainfile);
     if (context.action == Task.Build) {
       return ContextTaskProvider.contextTask("--synctex", mainfile);
     } else if (context.action == Task.Run) {
-      return displayLine(
-        nova.path.join(
-          nova.path.dirname(mainfile),
-          nova.path.splitext(mainfile)[0]
-        ) + ".pdf"
+      // return previewInSkim(
+      //   nova.path.join(
+      //     nova.path.dirname(mainfile),
+      //     nova.path.splitext(mainfile)[0]
+      //   ) + ".pdf"
+      // );
+      return previewInSkim(
+        stem + ".pdf"
       );
     } else if (context.action == Task.Clean) {
       console.info("[ConTeXt] Clean task handler activated.");
+      return new TaskCommandAction('org.mazaitis.context.cleanProjectFiles', {
+        args: [stem]
+      })
     }
   }
 }
 
+//Task Assistant
 nova.assistants.registerTaskAssistant(new ContextTaskProvider(), {
   identifier: ContextTaskProvider.identifier,
   name: "ConTeXt",

@@ -129,7 +129,7 @@
           "key": "org.mazaitis.context.mainfile",
           "title": "Compile ConTeXt",
           "description": "source file (defaults to the current file)",
-          "default": "$File",
+          "default": "",
           "type": "path",
           "filetype": ["tex", "mkiv", "lmtx"],
           "required": true
