@@ -29,11 +29,8 @@ nova.commands.register(
 );
 
 nova.commands.register('org.mazaitis.context.cleanProjectFiles', (workspace) => {
-  // console.log("Cleaning log: " + workspace.config.get("org.mazaitis.context.clean.log"));
-  // console.log("Cleaning file: " + workspace.activeTextEditor.document.path);
-  // let stem = nova.path.splitext(workspace.activeTextEditor.document.path)[0];
   let stem = nova.path.join(nova.path.dirname(workspace.activeTextEditor.document.path), nova.path.splitext(workspace.activeTextEditor.document.path)[0]);
-  // console.log("Cleaning stem: " + stem);
+
   if (workspace.config.get("org.mazaitis.context.clean.log")) {
     nova.fs.remove(stem + ".log");
   }
@@ -95,7 +92,7 @@ class ContextTaskProvider {
     );
     task.setAction(
       Task.Clean,
-      ContextTaskProvider.cleanProjectFiles()
+      // command.
     );
     return task;
   }
@@ -109,22 +106,21 @@ class ContextTaskProvider {
 
   resolveTaskAction(context) {
     let mainfile = context.config.get("org.mazaitis.context.mainfile");
-    // console.log("Mainfile from config: " + mainfile);
+
     if (mainfile == "" || !mainfile) {
       mainfile = nova.workspace.activeTextEditor.document.path;
-      // console.log("Mainfile from context: " + mainfile);
     }
+
     if (mainfile == "" || !mainfile) {
       console.error("[context] unable to determine mainfile!");
       return null;
     }
-    let stem = nova.path.join(nova.path.dirname(mainfile), nova.path.splitext(mainfile)[0]);
-    console.log("Mainfile is: " + mainfile);
+
     if (context.action == Task.Build) {
       return ContextTaskProvider.contextTask("--synctex", mainfile);
     } else if (context.action == Task.Run) {
       return previewInSkim(
-        stem + ".pdf"
+        nova.path.join(nova.path.dirname(mainfile), nova.path.splitext(mainfile)[0]) + ".pdf"
       );
     } else if (context.action == Task.Clean) {
       console.info("[ConTeXt] Clean task handler activated.");
