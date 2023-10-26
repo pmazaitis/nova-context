@@ -107,8 +107,10 @@ class ContextTaskProvider {
   }
 
   resolveTaskAction(context) {
+    // fetch the mainfile from the task configuration (for project files, etc.)
     let mainfile = context.config.get("org.mazaitis.context.mainfile");
 
+    // If not set in the configuration, get the path from the workspace object, if available
     if (mainfile == "" || !mainfile) {
       mainfile = nova.workspace.activeTextEditor.document.path;
     }
@@ -125,7 +127,6 @@ class ContextTaskProvider {
         nova.path.join(nova.path.dirname(mainfile), nova.path.splitext(mainfile)[0]) + ".pdf"
       );
     } else if (context.action == Task.Clean) {
-      console.info("[ConTeXt] Clean task handler activated.");
       return new TaskCommandAction('org.mazaitis.context.cleanProjectFiles', {
         args: []
       })
