@@ -32,6 +32,9 @@ ConTeXt currently supports the following features of Important Language:
 - Ipsum
 - Dolor
 
+- Spellchecking in 
+
+
 Support for:
 
 - Sit
