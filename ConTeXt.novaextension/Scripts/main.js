@@ -92,7 +92,9 @@ class ContextTaskProvider {
     );
     task.setAction(
       Task.Clean,
-      // command.
+      new TaskCommandAction('org.mazaitis.context.cleanProjectFiles', {
+        args: []
+      })
     );
     return task;
   }
