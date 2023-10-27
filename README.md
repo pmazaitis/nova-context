@@ -2,7 +2,7 @@
 
 ## Description
 
-This is an extension for Panic's (Nova Text Editor)[https://nova.app/] to support the [ConTeXt](https://www.contextgarden.net) document preparation system.
+This is an extension for Panic's [Nova Text Editor](https://nova.app/) to support the [ConTeXt](https://www.contextgarden.net) document preparation system.
 
 This extension supports:
 
@@ -15,11 +15,11 @@ This extension supports:
 
 ## Installation
 
-This extension can be installed via the (Extensions Library)[https://extensions.panic.com/], or by adding the extention locally. Install the extension locally by double clicking a local copy of the extension package.
+This extension can be installed via the [Extensions Library](https://extensions.panic.com/), or by adding the extention locally. Install the extension locally by double clicking a local copy of the extension package.
 
 ## Use
 
-For more information about how to use the Extension, please see (the Extension README.md)[https://github.com/pmazaitis/nova-context/tree/main/ConTeXt.novaextension#readme].
+For more information about how to use the Extension, please see [the Extension README.md](https://github.com/pmazaitis/nova-context/tree/main/ConTeXt.novaextension#readme).
 
 ## Contributing
 
@@ -49,7 +49,7 @@ _I am a hobbyist software developer._ I want to improve this software, but I can
 
 ## Credits
 
-This extension was inspired by the excellent (TeX Suite)[https://github.com/flyx/Nova-TeX-Suite] extension by Felix Krause. I developed this extension to leverage the (ConTeXt tree-sitter parser)[https://github.com/pmazaitis/tree-sitter-context] - I don't know of any way for a single extension to support switching between parsers based on chosen format.
+This extension was inspired by the excellent [TeX Suite](https://github.com/flyx/Nova-TeX-Suite) extension by Felix Krause. I developed this extension to leverage the [ConTeXt tree-sitter parser](https://github.com/pmazaitis/tree-sitter-context) - I don't know of any way for a single extension to support switching between parsers based on chosen format.
 
 ## License
 
