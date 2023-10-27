@@ -35,7 +35,14 @@
           "description": "Path to the `context` utility. May be simply 'context' if it is in your PATH.",
           "type": "path",
           "default": "context"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Language Server Protocol",
+      "description": "Options for configuring LSP (WIP)",
+      "type": "section",
+      "children": [
         {
           "key": "org.mazaitis.context.langserver",
           "title": "Language Server",
