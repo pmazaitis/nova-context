@@ -82,7 +82,7 @@ class ContextTaskProvider {
   }
 
   genericContextTask() {
-    const task = new Task("Current ConTeXt File");
+    const task = new Task("Compile Current ConTeXt File");
     task.setAction(Task.Build, ContextTaskProvider.contextTask("$File"));
     task.setAction(
       Task.Run,
