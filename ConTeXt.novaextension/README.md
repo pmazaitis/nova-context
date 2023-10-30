@@ -38,10 +38,29 @@ Syntax highlighting, folding, document hierarchy, and spellchecking work out of 
 
 The extension provides a **Compile Current ConTeXt File** task. With this task selected, there are three task actions available for the ConTeXt editor window with focus: Build, Run, and Clean.
 
+The **Build** (⌘B) action in this task will compile the ConTeXt file in the editor window with focus. This action will use the context binary specified in the workspace setting, and fall back to the binary specified in the global setting. 
+
+The **Run** (⌘R) action in this task will preview the PDF file associated with the ConTeXt file in the editor window with focus. This action will honor the configuration under **Skim Options** in the global extension settings. 
+
+The **Clean** action (⇧⌘K) in this task will remove files produced by compilation, as specified under **Clean Options** in the Workspace extension settings (Project > Project Settings... > ConTeXt).
 
 ### Generating Custom Tasks for Project Files
 
-The extension also provides a _Task Template_, which can be used to generate tasks for specific source files.
+The extension also provides a _Task Template_, which can be used to generate tasks for specific source files. This can be useful if you want to compile a master document in a ConTeXt project while editing other source files in the project structure. 
+
+To create a new task dedicated to a specific source file:
+
+1. Click the **Project** menu.
+2. Select **Project Settings**.
+3. In the left sidebar, click the plus symbol (**+**) next to _Tasks_.
+4. Select **Compile ConTeXt Project File**.
+5. Enter or browse to the path for the desired source file.
+
+If you leave the **Project file** blank, the task will default to compiling the ConTeXt file in the editor window with focus.
+
+After creating a custom task, it is recommended to rename the task to something meaningful: the name of the file being compiled, or the part of the project structure, etc.
+ 
+Custom tasks can be configured to automatically perform a Build action before a run action. Click the arrow next to the task, select **Run**, and click the **Build before running** option. 
 
 ## Configuration
 
@@ -49,9 +68,15 @@ This extension supports global and workspace settings.
 
 ### Global Configuration
 
+To reach the global configuration options:
+
 1. Extensions... > Extension Library
 2. Select the **ConTeXt** Extension in the side bar
 3. Select **Settings**
+
+Under **ConTeXt Options**
+
+
 
 
 
