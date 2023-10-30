@@ -70,25 +70,30 @@ This extension supports global and workspace settings.
 
 To reach the global configuration options:
 
-1. Extensions... > Extension Library
+1. Click the **Extensions...** menu, and select **Extension Library**
 2. Select the **ConTeXt** Extension in the side bar
 3. Select **Settings**
 
-Under **ConTeXt Options**
+Under **ConTeXt Options**, you may select the default `context` binary used across the extension. The extension will look for the binary in the PATH environment variable for your default login shell. You may also explicitly configure the extension with an absolute path to a specific `context` binary if needed.
 
+Under **Skim Options**, you may configure the location of `Skim.app` on your system. An absolute bath is recommended.
 
+You may configure how Skim is called when used to preview a PDF. 
 
+Enable **Revert Skim on Run** if you would like to force Skim to reload the file for each preview. This setting is not recommended if youhave Skim configured to detect file changes.
 
-
-
+Enable **Keep Skim in Background on Run** to maintain the editor as the top-most window on your screen.
 
 ### Workspace Configuration
 
+To reach the workspace configuration options:
 
+1. Click the **Project** menu, and select **Project Settings...**
+2. Select **ConTeXt** in the sidebar, under **Extensions** 
 
+Under **ConTeXt Options**, you may select the default `context` binary used within this workspace. This setting will override the global configuration. The extension will look for the binary in the PATH environment variable for your default login shell. You may also explicitly configure the extension with an absolute path to a specific `context` binary if needed.
 
-
-
+Under **Clean Options**, you may select which filetypes will be removed when running the **Clean** action for tasks in this workspace. _Warning:_ the clean task will permanently delete the files; it will not stage them into the Trash.
 
 
 

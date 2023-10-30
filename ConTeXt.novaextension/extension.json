@@ -1,9 +1,9 @@
 {
   "identifier": "org.mazaitis.paul.context",
-  "name": "ConTeXt (EN)",
+  "name": "ConTeXt",
   "organization": "Paul Mazaitis",
   "description": "ConTeXt language support.",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "categories": ["languages","tasks","completions"],
   "license": "MIT",
   "main": "main.js",
@@ -59,7 +59,7 @@
         },
         {
           "key": "org.mazaitis.context.skim.background",
-          "title": "Keep Skim in background on Run",
+          "title": "Keep Skim in Background on Run",
           "description": "Don't bring the Skim window into foreground when the Run action is used.",
           "type": "boolean",
           "default": false
@@ -69,11 +69,18 @@
   ],
   "configWorkspace": [
     {
-      "key": "org.mazaitis.context.path",
-      "title": "Path to ConTeXt",
-      "description": "Path to the `context` utility (overrides global setting if given).",
-      "type": "path",
-      "default": "context"
+      "title": "ConTeXt Options",
+      "description": "Options for building ConTeXt documents",
+      "type": "section",
+      "children": [
+        {
+          "key": "org.mazaitis.context.path",
+          "title": "Path to ConTeXt",
+          "description": "Path to the `context` utility (overrides global setting if given).",
+          "type": "path",
+          "default": "context"
+        }
+      ] 
     },
     {
       "title": "Clean Options",
