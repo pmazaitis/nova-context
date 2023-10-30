@@ -1,0 +1,28 @@
+{
+    "clips": [
+        {
+            "syntax": "context",
+            "content": "\\startpart[title={$0}]\n\n$1\n\n\\stoppart",
+            "name": "Part",
+            "shortcut": "cmd-opt-p"
+        },
+        {
+            "syntax": "context",
+            "content": "\\startchapter[title={$0}]\n\n$1\n\n\\stopchapter",
+            "name": "Chapter",
+            "shortcut": "cmd-opt-c"
+        },
+        {
+            "syntax": "context",
+            "content": "\\startsection[title={$0}]\n\n$1\n\n\\stopsection",
+            "name": "Section",
+            "shortcut": "cmd-opt-s"
+        },
+        {
+            "syntax": "context",
+            "content": "\\startsubsection[title={$0}]\n\n$1\n\n\\stopsubsection",
+            "name": "Subsection",
+            "shortcut": "cmd-opt-b"
+        }
+    ]
+}
