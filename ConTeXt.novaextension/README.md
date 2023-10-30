@@ -4,7 +4,7 @@
 🎈 It can also be helpful to include a screenshot or GIF showing your extension in action:
 -->
 
-![](https://nova.app/images/en/dark/editor.png)
+<!-- ![](https://nova.app/images/en/dark/editor.png) -->
 
 ## Features
 
