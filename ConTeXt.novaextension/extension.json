@@ -22,7 +22,7 @@
     "repository": "https://github.com/pmazaitis/nova-context",
     "funding": "https://github.com/sponsors/pmazaitis",
     "bugs": "https://github.com/pmazaitis/nova-context/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=",
-  }
+  },
   "config": [
     {
       "title": "ConTeXt Options",
@@ -134,12 +134,12 @@
   ],
   "taskTemplates": {
     "context": {
-      "name": "Compile Context",
+      "name": "Compile ConTeXt Project File",
       "description": "Builds the PDF with ConTeXt. Supports auto-update & preview with Skim via run button.",
       "config": [
         {
           "key": "org.mazaitis.context.mainfile",
-          "title": "Compile ConTeXt",
+          "title": "Project File",
           "description": "source file (defaults to the current file)",
           "default": "",
           "type": "path",
