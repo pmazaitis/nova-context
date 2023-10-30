@@ -39,20 +39,6 @@
       ]
     },
     {
-      "title": "Language Server Protocol",
-      "description": "Options for configuring LSP (WIP)",
-      "type": "section",
-      "children": [
-        {
-          "key": "org.mazaitis.context.langserver",
-          "title": "Language Server",
-          "type": "path",
-          "default": "digestif",
-          "description": "Language Server utility to use for ConTeXt files."
-        }
-      ]
-    },
-    {
       "title": "Skim Options",
       "description": "These options apply to using Skim as PDF previewer.",
       "type": "section",
