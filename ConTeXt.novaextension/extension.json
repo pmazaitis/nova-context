@@ -21,7 +21,7 @@
   "links": {
     "repository": "https://github.com/pmazaitis/nova-context",
     "funding": "https://github.com/sponsors/pmazaitis",
-    "bugs": "https://github.com/pmazaitis/nova-context/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=",
+    "bugs": "https://github.com/pmazaitis/nova-context/issues/",
   },
   "config": [
     {
