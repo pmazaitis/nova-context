@@ -15,7 +15,7 @@ This extension supports:
 
 ## Installation
 
-This extension can be installed (eventually!) via the [Extensions Library](https://extensions.panic.com/), or by adding the extention locally. Install the extension locally by double clicking a local copy of the extension package.
+This extension can be installed via the [Extensions Library](https://extensions.panic.com/extensions/org.mazaitis.paul/org.mazaitis.paul.context/), or by adding the extention locally. Install the extension locally by double clicking a local copy of the extension package.
 
 ## Use
 
