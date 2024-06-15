@@ -5,6 +5,9 @@
   "description": "ConTeXt language support.",
   "version": "0.6.0",
   "categories": ["languages","tasks","completions"],
+  "funding": "https://github.com/sponsors/pmazaitis/",
+  "repository": "https://github.com/pmazaitis/nova-context/",
+  "bugs": "https://github.com/pmazaitis/nova-context/issues/",
   "license": "MIT",
   "main": "main.js",
   "activationEvents": [
@@ -17,11 +20,6 @@
     "process": true,
     "requests": false,
     "filesystem": "readwrite"
-  },
-  "links": {
-    "repository": "https://github.com/pmazaitis/nova-context",
-    "funding": "https://github.com/sponsors/pmazaitis",
-    "bugs": "https://github.com/pmazaitis/nova-context/issues/",
   },
   "config": [
     {
@@ -121,7 +119,7 @@
           "description": "Remove the .pdf file associated with the current source file.",
           "type": "boolean",
           "default": false
-        },
+        }
       ]
     }
   ],
